@@ -1,5 +1,5 @@
 build: 
-  project: AppVeyor_Sign.sln
+  project: C:\projects\appveyor-sign\AppVeyor_Sign.sln
 install:
   # Download .NET Core 2.0 Preview 1 SDK and add to PATH
   - ps: $urlCurrent = "https://download.microsoft.com/download/0/6/5/0656B047-5F2F-4281-A851-F30776F8616D/dotnet-dev-win-x64.2.0.0-preview1-005977.zip"
