@@ -7,8 +7,10 @@ C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool.exe" sign /f "C
 ```
 * Sign the dll in post build phase
 
-## TB Solved
-* Secure file
+## Secure File
+* upload *.*.enc
+* build online for Decryption
+* use the key to Extract file
 
 ## Legit .yml
 * [Click](https://github.com/particle-iot/windows-device-drivers/blob/master/appveyor.yml)
