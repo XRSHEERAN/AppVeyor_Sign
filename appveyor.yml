@@ -1,3 +1,0 @@
-build: 
-  project: C:\projects\appveyor-sign\ConsoleApp1.sln
-  dotnet pack C:\projects\appveyor-sign\ConsoleApp1.csproj --output cmd.dll
