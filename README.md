@@ -9,3 +9,6 @@ C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool.exe" sign /f "C
 
 ## TB Solved
 * Secure file
+
+## Legit .yml
+* [Click](https://github.com/particle-iot/windows-device-drivers/blob/master/appveyor.yml)
