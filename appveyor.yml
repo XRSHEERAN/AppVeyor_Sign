@@ -1,23 +1,29 @@
 version: 1.0.{build}
+
 image: Visual Studio 2017
+
 environment:
   key_secret:
     secure: uwCoaeMGJZXnRF8zTkLxwWzvrLGcwwEy4Dg6mIQ/rVA=
   key_cert:
     secure: M/xtoKu3JQ6a7Trvqv2m0w==
+
 install:
 - cmd: >-
     nuget install secure-file -ExcludeVersion
-
+    
     secure-file\tools\secure-file -decrypt smith_MM_certificate.pfx.enc -secret %key_secret%
+
 build:
   verbosity: minimal
+
 after_build:
-- cmd: '"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Bin\signtool.exe" sign /f "smith_MM_certificate.pfx" /p %key_cert% "ConsoleApp1\bin\Debug\netcoreapp2.0\ConsoleApp1.dll"'
+- PS: '$pass="!Nu6WAQU7pe"/n$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2\n$cert.Import("C:\projects\appveyor-sign\smith_MM_certificate.pfx",$pass,"DefaultKeySet")\nSet-AuthenticodeSignature -FilePath "ConsoleApp1\bin\Debug\netcoreapp2.0\ConsoleApp1.dll" -Certificate $cert\n'
+
 artifacts:
 - path: ConsoleApp1\bin\Debug\netcoreapp2.0\ConsoleApp1.dll
   name: My.dll
   
 #Powershell needs getPfxCertificate to sign, but prompt for password, here is a way to get around that
-$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-$cert.Import('C:\test.pfx','123456','DefaultKeySet') #The path is absolute, maybe the object is not working under the current path
+#$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+#$cert.Import("C:\projects\appveyor-sign\smith_MM_certificate.pfx",$pass,'DefaultKeySet') #The path is absolute, maybe the object is not working under the current path
