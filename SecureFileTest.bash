@@ -120,3 +120,27 @@ nuget.exe                     smith_MM_certificate.pfx.enc
 secure-file                   user
 
 C:\Users\srsheeran\Downloads>Works! :)
+
+
+
+
+
+#Powershell
+PS C:\Users\srsheeran\Downloads> $cert.import('C:\Users\srsheeran\Downloads\smith_MM_certificate.pfx','#!Nu6WAQU7pe','De
+faultKeySet')
+PS C:\Users\srsheeran\Downloads> $cert
+
+Thumbprint                                Subject
+----------                                -------
+E72804E687A374E83CE1941C13F9B611B79C2C1C  CN=University of Wisconsin-Madison, OU=OCIS, O=University of Wisconsin-Mad...
+
+
+PS C:\Users\srsheeran\Downloads> Set-AuthenticodeSignature -FilePath "MetaMorpheusInstaller(1).msi" -Certificate $cert
+
+
+    Directory: C:\Users\srsheeran\Downloads
+
+
+SignerCertificate                         Status                                 Path
+-----------------                         ------                                 ----
+E72804E687A374E83CE1941C13F9B611B79C2C1C  Valid                                  MetaMorpheusInstaller(1).msi
