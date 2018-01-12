@@ -18,7 +18,16 @@ build:
   verbosity: minimal
 
 after_build:
-- PS: '$pass="!Nu6WAQU7pe"/n$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2\n$cert.Import("C:\projects\appveyor-sign\smith_MM_certificate.pfx",$pass,"DefaultKeySet")\nSet-AuthenticodeSignature -FilePath "ConsoleApp1\bin\Debug\netcoreapp2.0\ConsoleApp1.dll" -Certificate $cert\n'
+
+- ps: >-
+
+  $pass="!Nu6WAQU7pe"
+  
+  $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+  
+  $cert.Import("C:\projects\appveyor-sign\smith_MM_certificate.pfx",$pass,"DefaultKeySet")
+  
+  Set-AuthenticodeSignature -FilePath "ConsoleApp1\bin\Debug\netcoreapp2.0\ConsoleApp1.dll" -Certificate $cert
 
 artifacts:
 - path: ConsoleApp1\bin\Debug\netcoreapp2.0\ConsoleApp1.dll
