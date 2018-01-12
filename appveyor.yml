@@ -17,3 +17,7 @@ after_build:
 artifacts:
 - path: ConsoleApp1\bin\Debug\netcoreapp2.0\ConsoleApp1.dll
   name: My.dll
+  
+#Powershell needs getPfxCertificate to sign, but prompt for password, here is a way to get around that
+$cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+$cert.Import('C:\test.pfx','123456','DefaultKeySet') #The path is absolute, maybe the object is not working under the current path
